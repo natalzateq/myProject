@@ -1,0 +1,88 @@
+<link rel="stylesheet" type="text/css" href="/../assets/bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/../assets/css/style.css">
+<script type="text/javascript" src="/../assets/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="/../assets/bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="/../assets/bower_components/angular-resource/angular-resource.js"></script>
+
+
+
+
+
+<div class="container">
+    <h2>Add Pets</h2>
+  <label>Nombre:
+    <input class="form-control" #petNombre />
+  </label>
+
+  <label>Edad:
+    <input class="form-control" #petEdad />
+  </label>
+
+  <!-- <label>Pet Raza:
+    <input class="form-control" #petRaza />
+  </label> -->
+  <label>Raza:
+      <select  #petRaza class="form-control">
+          <option value="">Seleccione</option>
+          <option *ngFor="let raza of razas" value="{{raza.id}}">{{raza.nombre}}</option>
+      </select>
+  </label>
+  
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button class="btn btn-success" (click)="add(petNombre.value, petEdad.value,petRaza.value); ">
+    add
+  </button>
+</div>
+
+
+
+
+<div class="container">
+    <div class="container">
+<table class="table bordered">
+<tr>
+<td></td>
+<td>Nombre</td>
+<td>Edad</td>
+<td>Raza</td>
+</tr>
+<tr *ngFor="let pet of pets" >
+  <td>
+      <a title="Editar Pet" routerLink="/detail/{{pet.id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+      <a title="Eliminar Pet"   (click)="delete(pet)" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+    </td>
+<td>{{pet.nombre}}</td>
+<td>{{pet.edad}}</td>
+<td>{{pet.raza}}</td>
+</tr>
+</table>
+
+</div>
+</div>
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="/../assets/bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/../assets/css/style.css">
+<script type="text/javascript" src="/../assets/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="/../assets/bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="/../assets/bower_components/angular-resource/angular-resource.js"></script>
+<div class="container" *ngIf="pet">
+
+  <h2>{{ pet.nombre | uppercase }} Details</h2>
+  <div>
+      <input type="hidden" class="form-control" [(ngModel)]="pet.id" />
+    <label>Nombre:
+      <input class="form-control" [(ngModel)]="pet.nombre" placeholder="nombre"/>
+    </label>
+    <label>Edad:
+      <input class="form-control" [(ngModel)]="pet.edad" placeholder="edad"/>
+    </label>
+    <!-- <label>Raza:
+      <input class="form-control" [(ngModel)]="pet.Raza_idRaza" placeholder="raza"/>
+    </label>  -->
+
+    <label>Raza:
+        
+            <select class="form-control"  [(ngModel)]="pet.Raza_idRaza">
+            <option value="">Seleccione</option>
+            <option *ngFor="let raza of razas" value="{{raza.id}}">{{raza.nombre}}</option>
+        </select>
+    </label>
+  </div>
+
+<button class="btn btn-primary" (click)="goBack()">go back</button>
+<button class="btn btn-success" (click)="save()">save</button>
+
+</div>
+
+
+

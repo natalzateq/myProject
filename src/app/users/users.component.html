@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="/../assets/bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/../assets/css/style.css">
+<script type="text/javascript" src="/../assets/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="/../assets/bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="/../assets/bower_components/angular-resource/angular-resource.js"></script>
+
+
+<div class="container" >
+        <h2>Add Users</h2>
+      <label>Nombres:
+        <input class="form-control"  #userNombres_user />
+      </label>
+    
+      <label>Apellidos:
+        <input class="form-control" #userApellidos_user />
+      </label>
+
+      <label>Username:
+            <input class="form-control" #userUsername/>
+     </label>
+    
+     <label>Password:
+        <input type="password" class="form-control" #userPassword />
+     </label>
+     
+     
+      
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button class="btn btn-success" (click)="add(userNombres_user.value,
+       userApellidos_user.value,userUsername.value, userPassword.value); ">
+        add
+      </button>
+    </div>
+
+<div class="container">
+    <div class="container">
+<table class="table bordered">
+<tr>
+<td></td>
+<td>Nombre</td>
+<td>Apellido</td>
+<td>Username</td>
+
+</tr>
+<tr *ngFor="let user of users" >
+       
+  <td>
+      <a title="Editar User" routerLink="/detail/{{user.id_user}}"><span class="glyphicon glyphicon-pencil"></span></a>
+      <a title="Eliminar User"   (click)="delete(user)" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+    </td>
+<td>{{user.nombres_user}}</td>
+<td>{{user.apellidos_user}}</td>
+<td>{{user.username}}</td>
+
+</tr>
+</table>
+
+</div>
+</div>
